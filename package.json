@@ -1,0 +1,21 @@
+{
+  "name": "firstcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.39.0",
+    "@types/node": "^20.9.0"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.2",
+    "fast-csv": "^4.3.6",
+    "playwright": "^1.39.0",
+    "playwright-core": "^1.39.0",
+    "undici-types": "^5.26.5"
+  },
+  "description": ""
+}
