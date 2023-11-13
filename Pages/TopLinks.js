@@ -20,7 +20,6 @@ exports.NavLinks = class NavLinks {
 
     async GotoCart() {
         await this.page.locator('[id="topcartlink"]').click();
-        await this.page.locator('[id="topcartlink"]').click();
     }
 
 
