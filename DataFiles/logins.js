@@ -1,11 +1,22 @@
-exports.dataLogins = class dataLogins{
+/*
+This contains the user data to be used
+*/
 
+exports.dataLogins = class dataLogins {
 
-    async getGenericUserName(){
+    /*
+    Gets the email to be used
+    @return - email to be used
+    */
+    async getGenericUserName() {
         return 'playwright@gmail.com'
     }
 
-    async  getGenericPassword(){
+    /*
+    Gets the password of the above email
+    @return - password of the above email
+    */
+    async getGenericPassword() {
         return 'Pass1234'
     }
 

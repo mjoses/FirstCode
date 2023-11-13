@@ -1,12 +1,18 @@
-exports.LaunchWebsite = class LaunchWebsite{
+/*
+This launches the demo workshop
+*/
+exports.LaunchWebsite = class LaunchWebsite {
 
-constructor(page){
-    this.page = page
-}
+    constructor(page) {
+        this.page = page
+    }
 
-async LaunchDemoWebsite(){
-    await this.page.goto('https://demowebshop.tricentis.com/');
-}
+    /*
+    Launches the website URL
+    */
+    async LaunchDemoWebsite() {
+        await this.page.goto('https://demowebshop.tricentis.com/');
+    }
 
-    
+
 }
