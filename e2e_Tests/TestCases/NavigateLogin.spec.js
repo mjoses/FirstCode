@@ -6,7 +6,9 @@ import {Login} from '../../Pages/LoginPage'
 
 //This Script navigate to Login
 //test('test', async ({ page }) => {
-test ('Navigate to Login Page', async ({page}) =>{
+
+const TestName = 'Navigate to Login Page'
+test (TestName, async ({page}) =>{
     
     const OpenWebsite = new LaunchWebsite(page) 
     const Link = new NavLinks(page)
@@ -15,6 +17,7 @@ test ('Navigate to Login Page', async ({page}) =>{
     await OpenWebsite.LaunchDemoWebsite()
     await Link.GoToLoginPage()
     await newLogin.SignIn('playwright@gmail.com','Pass1234')
+    await page.screenshot({ path: TestName+'.png' });
     await Link.SignOut();
     
 })
