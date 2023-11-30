@@ -18,7 +18,7 @@ test.beforeAll('Launch and Signin', async ({ browser }) => {
     Link = new NavLinks(page)
     const OpenWebsite = new LaunchWebsite(page)
     const newLogin = new Login(page)
-    const newDataLogin = new dataLogins(page)
+    const newDataLogin = new dataLogins()
     const username = (await newDataLogin.getGenericUserName())
     const password = (await newDataLogin.getGenericPassword())
 
@@ -44,11 +44,8 @@ test('Add a Product and delete', async ({ }) => {
     const newNavBar = new NavBar(page)
     const newBook = new BooksPage(page)
     const newCart = new CartPage(page)
-    let bookName
 
-    //iniate and declare assertion variables
-    const idLocator = await page.locator('td:nth-child(3)', { hasText: bookName });
-    const checkbox = await page.locator('table.cart tbody tr', { has: idLocator });
+
 
     //Navigate to Books category
     await newNavBar.GoToACategory('Books')
@@ -57,7 +54,11 @@ test('Add a Product and delete', async ({ }) => {
     await newBook.AddFirstAvailableBook()
 
     //Get the name of the added book
-    bookName = await newBook.GetFirstAvailableBookName()
+     const bookName = await newBook.GetFirstAvailableBookName()
+
+    //iniate and declare assertion variables
+    const idLocator = await page.locator('td:nth-child(3)', { hasText: bookName });
+    const bookInCart = await page.locator('table.cart tbody tr', { has: idLocator });
 
     //below is for debug purposes
     //console.log('Product Name: ' + bookName)
@@ -66,14 +67,14 @@ test('Add a Product and delete', async ({ }) => {
     await Link.GotoCart()
 
     //assert if the added product is in the cart
-    await expect(checkbox).toHaveCount(1)
-    await expect(checkbox).toBeVisible()
+    await expect(bookInCart).toHaveCount(1)
+    await expect(bookInCart).toBeVisible()
 
     //delete product
-    await newCart.deletedProduct(bookName)
+    await newCart.deleteProduct(bookName)
 
     //Assert if product is deleted
-    await expect(checkbox).toHaveCount(0)
+    await expect(bookInCart).toHaveCount(0)
 })
 
 

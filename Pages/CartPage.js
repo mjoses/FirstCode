@@ -14,7 +14,7 @@ exports.CartPage = class CartPage {
     Deletes the given product name from the cart
     @paramater - productName = name of the product to be deleted
     */
-    async deletedProduct(productName) {
+    async deleteProduct(productName) {
         const idLocator = await this.page.locator('td:nth-child(3)', { hasText: productName });
         const checkbox = await this.page.locator('table.cart tbody tr', { has: idLocator }).locator('input[type=checkbox]');
         await checkbox.check();
@@ -40,8 +40,19 @@ exports.CartPage = class CartPage {
     async getTotal() {
         const totalIdentifier = await this.page.getByRole('cell', { name: 'Total:', exact: true })
         const Total = await this.page.locator('table.cart-total tbody tr', { has: totalIdentifier }).locator('td:nth-child(2)').innerText()
+
+        //const Total = await this.page.locator('table.cart-total tbody tr:has-text("Total:")').locator('td:nth-child(2)').innerText();
         return Total
     }
+
+    async checkTermsOfService(){
+        await this.page.locator('#termsofservice').check();
+    }
+
+    async clickCheckout(){
+        await this.page.getByRole('button', { name: 'Checkout' }).click();   
+    }
+
 
     
 

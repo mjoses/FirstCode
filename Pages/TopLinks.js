@@ -33,6 +33,10 @@ exports.NavLinks = class NavLinks {
         await this.page.locator('[id="topcartlink"]').click();
     }
 
+    async GoToUserAccount(){
+        await this.page.locator('//div[@class="header-links"]//a[@class="account"]').click()
+    }
+
 
 
 
